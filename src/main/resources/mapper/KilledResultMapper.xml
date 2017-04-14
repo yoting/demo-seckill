@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gusi.demo.seckill.dao.KilledResultDao">
+
+    <insert id="insertKilled">
+        insert ignore into killed_result(seckill_id,user_mobile,state,create_time)
+        values(#{seckillId},#{userMobile},1,current_timestamp);
+    </insert>
+
+    <select id="queryByIdWithSeckill" resultType="KilledResult">
+        select
+        sk.seckill_id,sk.user_mobile,sk.create_time,sk.state,
+        s.seckill_id "seckill.seckill_id",s.name "seckill.name",s.number "seckill.number",s.create_time
+        "seckill.create_time",s.end_time "seckill.end_time",s.create_time "seckill.create_time"
+        from killed_result sk
+        inner join seckill s on sk.seckill_id = s.seckill_id
+        where sk.seckill_id = #{seckillId};
+    </select>
+
+
+</mapper>
