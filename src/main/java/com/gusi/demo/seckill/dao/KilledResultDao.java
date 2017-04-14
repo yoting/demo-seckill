@@ -25,4 +25,5 @@ public interface KilledResultDao {
      */
     KilledResult queryByIdWithSeckill(@Param("seckillId") long seckillId);
 
+
 }
