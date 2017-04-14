@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <target>System.out</target>
-        <encoder>
-            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%-5level][%thread][%logger{35}.%method\(%file:%line\)] - [%msg]%n
-            </pattern>
-        </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>debug</level>
-        </filter>
-    </appender>
 
-    <appender name="mybatisLogger" class="ch.qos.logback.core.ConsoleAppender">
-        <target>System.out</target>
-        <encoder>
-            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%-5level][%thread][%logger{35}.%method\(%file:%line\)] - [%msg]%n
-            </pattern>
-        </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>debug</level>
-        </filter>
-    </appender>
+	<property name="CATALINA_BASE" value="../"></property>
+	<property name="CONSOLE_LOG_PATTERN" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
 
+	<!-- mybatis 日志 -->
+	<logger name="com.gusi.demo.seckill.dao" level="DEBUG" />
 
-    <logger name="com.gusi.demo.seckill" level="DEBUG">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.apache.ibatis" level="DEBUG">
-        <appender-ref ref="mybatisLogger"/>
-    </logger>
-    <root level="DEBUG">
-        <appender-ref ref="console"/>
+    <!-- local -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- 控制台日志级别 -->
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>${CONSOLE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
     </root>
+
 
 </configuration>

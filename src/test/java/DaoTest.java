@@ -15,7 +15,7 @@ import java.util.List;
  * Created by GUSI on 2017/4/14.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring-dao.xml"})
+@ContextConfiguration({"classpath:spring-context.xml"})
 public class DaoTest {
     @Autowired
     private SeckillDao seckillDao;
