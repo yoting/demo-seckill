@@ -7,9 +7,11 @@ public class SeckillInfo {
     private long seckillId;
     private String md5;
     private boolean opened;
-    private long createTime;
+    private long startTime;
     private long endTime;
     private long nowTime;
+
+
 
     public long getSeckillId() {
         return seckillId;
@@ -35,12 +37,12 @@ public class SeckillInfo {
         this.opened = opened;
     }
 
-    public long getCreateTime() {
-        return createTime;
+    public long getStartTime() {
+        return startTime;
     }
 
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
     public long getEndTime() {

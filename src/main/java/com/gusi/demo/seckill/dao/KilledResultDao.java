@@ -21,9 +21,10 @@ public interface KilledResultDao {
      * 查询秒杀结果
      *
      * @param seckillId
+     * @param userMobile
      * @return 返回包含seckill对象
      */
-    KilledResult queryByIdWithSeckill(@Param("seckillId") long seckillId);
+    KilledResult queryByIdWithSeckill(@Param("seckillId") long seckillId, @Param("userMobile") String userMobile);
 
 
 }

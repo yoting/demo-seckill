@@ -17,7 +17,7 @@
         "seckill.create_time",s.end_time "seckill.end_time",s.create_time "seckill.create_time"
         from killed_result sk
         inner join seckill s on sk.seckill_id = s.seckill_id
-        where sk.seckill_id = #{seckillId};
+        where sk.seckill_id = #{seckillId} and sk.user_mobile = #{userMobile};
     </select>
 
 

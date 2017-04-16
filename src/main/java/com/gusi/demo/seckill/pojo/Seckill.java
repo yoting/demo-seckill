@@ -3,6 +3,7 @@ package com.gusi.demo.seckill.pojo;
 import java.util.Date;
 
 /**
+ * 秒杀对象
  * Created by GUSI on 2017/4/14.
  */
 public class Seckill {
