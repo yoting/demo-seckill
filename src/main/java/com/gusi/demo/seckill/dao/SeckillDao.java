@@ -18,7 +18,7 @@ public interface SeckillDao {
      * @param killTime
      * @return
      */
-    int redurceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
+    int reduceNumber(@Param("seckillId") long seckillId, @Param("killTime") Date killTime);
 
 
     /**

@@ -14,6 +14,7 @@ import com.gusi.demo.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
@@ -25,6 +26,7 @@ import java.util.List;
  * 秒杀服务类
  * Created by GUSI on 2017/4/14.
  */
+@Service
 public class SeckillServiceImpl implements SeckillService {
     public static Logger logger = LoggerFactory.getLogger(SeckillServiceImpl.class);
     @Autowired
@@ -69,7 +71,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public KilledDoing doingSeckill(long seckillId, String md5, String userMobile) {
+    public KilledDoing doingSeckill(long seckillId, String md5, String userMobile) throws SeckillException, RepeatException, ClosedException {
         String md5req = getSeckillMd5(seckillId + "");
         if (md5req.equals(md5)) {
             Date nowDtae = new Date();
@@ -79,7 +81,7 @@ public class SeckillServiceImpl implements SeckillService {
             }
 
             //执行减库存操作
-            int reduce = seckillDao.redurceNumber(seckillId, nowDtae);
+            int reduce = seckillDao.reduceNumber(seckillId, nowDtae);
             if (reduce <= 0) {
                 throw new RepeatException(KilledStateEnum.KILLED_ENDED.getStateInfo());
             }
