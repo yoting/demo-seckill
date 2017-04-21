@@ -1,8 +1,8 @@
-<%@include file="common/tag.jsp"%>
-<!DOCTYPE html>
+<%@include file="common/tag.jsp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>秒杀列表</title>
+<title>汉子</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <%@include file="common/head.jsp"%>
@@ -40,8 +40,7 @@
 		</div>
 	</div>
 </body>
-<script
-	src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script	src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="/demo/statics/seckill.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function() {
