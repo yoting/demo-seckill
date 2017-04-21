@@ -1,5 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <%@include file="common/tag.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>秒杀商品详情</title>
@@ -19,6 +21,7 @@
     </div>
 </div>
 
+<!--秒杀电话填写窗口-->
 <div id="killMobileModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -51,10 +54,8 @@
 </html>
 
 <script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<%--<script src="http://cdn.bootcss.com/jquery-countdown/2.0.1/jquery.countdown.min.js"></script>--%>
-<%--<script src="http://libs.cncdn.cn/jquery-countdown/2.0.0/jquery.countdown.min.js"></script>--%>
+<script src="https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
 <script src="/demo/statics/seckill.js" type="text/javascript"></script>
-
 <script type="text/javascript">
     $(function () {
         seckill.detail.init({

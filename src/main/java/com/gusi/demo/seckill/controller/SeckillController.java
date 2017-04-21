@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class SeckillController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getSeckillList(Model model, HttpServletRequest request, HttpServletResponse response) {
-        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         List<Seckill> seckills = seckillService.querySeckillList(0, 10);
 
         model.addAttribute("list", seckills);
@@ -117,4 +118,17 @@ public class SeckillController {
 
         return response;
     }
+
+    /**
+     * 获取系统当前时间
+     *
+     * @return
+     */
+    @RequestMapping(value = "/time/now", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public SeckillRsp getNowTime() {
+        SeckillRsp response = new SeckillRsp(new Date().getTime());
+        return response;
+    }
+
 }

@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
+import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 
@@ -103,7 +104,7 @@ public class SeckillServiceImpl implements SeckillService {
 
     private String getSeckillMd5(String seckillId) {
         String salt = "asdikdsa;lkjfpoi77jkj;aslkdjfi";
-        byte[] md5Bytes = DigestUtils.md5Digest((salt + seckillId).getBytes());
+        byte[] md5Bytes = DigestUtils.md5Digest((salt + seckillId).getBytes(Charset.forName("UTF-8")));
         return new String(md5Bytes);
     }
 }
