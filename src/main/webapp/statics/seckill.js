@@ -13,10 +13,16 @@ var seckill =
             }
         },
 
+        list:{
+            init:function () {
+                var jsessionid = $.cookie("JSESSIONID");
+                alert(jsessionid);
+            }
+        },
+
         //详情页面js
         detail: {
             init: function (parame) {
-                alert(2);
                 //手机号验证
                 var killMobile = $.cookie("killMobile");
                 var seckillId = parame["seckillId"];
@@ -37,7 +43,7 @@ var seckill =
                     var inputMobile = $("#killMobile").val();
                     if (seckill.validatMobile(inputMobile)) {
                         //写cookie
-                        $.cookie('killMobile', inputMobile, {expires: 7, path: '/seckill'});
+                        $.cookie('killMobile', inputMobile, {expires: 7, path: '/demo'});
                         //刷新页面
                         window.location.reload();
                     } else {

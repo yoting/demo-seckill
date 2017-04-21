@@ -53,11 +53,10 @@
 <script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <%--<script src="http://cdn.bootcss.com/jquery-countdown/2.0.1/jquery.countdown.min.js"></script>--%>
 <%--<script src="http://libs.cncdn.cn/jquery-countdown/2.0.0/jquery.countdown.min.js"></script>--%>
-<script src="/seckill/statics/seckill.js" type="text/javascript"></script>
+<script src="/demo/statics/seckill.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(function () {
-        alert(1);
         seckill.detail.init({
             seckillId:${seckill.seckillId},
             startTime:${seckill.startTime.time},

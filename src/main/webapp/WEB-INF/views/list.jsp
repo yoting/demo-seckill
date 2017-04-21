@@ -26,7 +26,7 @@
                         <td>${item.number}</td>
                         <td><fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td><fmt:formatDate value="${item.endTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                        <td><a class="btn btn-info" href="/seckill/seckill/${item.seckillId}/detail">去看看</a></td>
+                        <td><a class="btn btn-info" href="/demo/seckill/${item.seckillId}/detail">去看看</a></td>
                     </tr>
                 </c:forEach>
 
@@ -35,4 +35,11 @@
     </div>
 </div>
 </body>
+<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/demo/statics/seckill.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        seckill.list.init();
+    });
+</script>
 </html>

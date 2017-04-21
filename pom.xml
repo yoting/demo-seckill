@@ -18,6 +18,11 @@
 
         <!--log-->
         <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.6.1</version>
@@ -72,20 +77,15 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>javax.servlet</groupId>
+            <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
-        <!--<dependency>-->
-            <!--<groupId>jstl</groupId>-->
-            <!--<artifactId>jstl</artifactId>-->
-            <!--<version>1.2</version>-->
-        <!--</dependency>-->
 
-        <!-- https://mvnrepository.com/artifact/taglibs/standard -->
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
@@ -165,9 +165,21 @@
                             <port>8080</port>
                         </connector>
                     </connectors>
-                    <contextPath>/seckill</contextPath>
+                    <contextPath>/demo</contextPath>
                 </configuration>
             </plugin>
+            <!-- Tomcat7插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/demo</path>
+                    <port>8080</port>
+                    <contextReloadable>false</contextReloadable>
+                </configuration>
+            </plugin>
+
         </plugins>
 
     </build>

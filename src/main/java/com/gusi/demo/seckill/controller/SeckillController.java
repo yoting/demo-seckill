@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -35,7 +37,8 @@ public class SeckillController {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getSeckillList(Model model) {
+    public String getSeckillList(Model model, HttpServletRequest request, HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
         List<Seckill> seckills = seckillService.querySeckillList(0, 10);
 
         model.addAttribute("list", seckills);
