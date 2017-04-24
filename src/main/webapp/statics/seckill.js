@@ -8,7 +8,7 @@ var seckill =
                 return '/demo/seckill/' + seckillId + '/info'
             },
             doingSeckill: function (seckillId, md5) {
-                return '/demo/seckill/' + seckillId + '/' + md5;
+                return '/demo/seckill/' + seckillId + '/' + md5+'/doing';
             }
 
         },
@@ -56,19 +56,23 @@ var seckill =
                     var info = result['data'];
                     if (info['opened']) {
                         var md5 = info['md5'];
-                        var killURL = seckill.URL.doingSeckill(seckillId, md5);
-                        console.log("killurl" + killURL);
-                        alert(killURL);
+                        var killUrl = seckill.URL.doingSeckill(seckillId, md5);
+                        console.log("killurl" + killUrl);
+                        alert(killUrl);
 
+                        //按钮绑定秒杀事件
                         $("#killBtn").one('click', function () {
-                            //执行秒杀
                             $(this).addClass('disabled');
-                            $.post(killURL, {}, function (result) {
+                            //执行秒杀
+                            $.post(killUrl, {}, function (result) {
                                 if (result && result['state']) {
                                     var killedResult = result['data'];
-                                    var state = killedResult['state'];
-                                    var stateInfo = killedResult['stateInfo'];
-                                    node.html('<span class="label label-success">' + stateInfo + '</span>')
+                                    var killedState = killedResult['killedState'];
+                                    var killedStateInfo = killedResult['killedStateInfo'];
+                                    node.html('<span class="label label-success">' + killedStateInfo + '</span>')
+                                }else{
+                                    var errorInfo = result['error'];
+                                    node.html('<span class="label label-success">' + errorInfo + '</span>');
                                 }
                             });
                         });
@@ -128,7 +132,6 @@ var seckill =
 
                 //计时器交互
                 $.get(seckill.URL.nowTime(), {}, function (result) {
-                    alert(result);
                     if (result && result['state']) {
                         var nowTime = result['data'];
                         seckill.countdownTime(seckillId, nowTime, startTime, endTime);

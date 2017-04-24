@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -103,8 +105,25 @@ public class SeckillServiceImpl implements SeckillService {
 
 
     private String getSeckillMd5(String seckillId) {
-        String salt = "asdikdsa;lkjfpoi77jkj;aslkdjfi";
-        byte[] md5Bytes = DigestUtils.md5Digest((salt + seckillId).getBytes(Charset.forName("UTF-8")));
-        return new String(md5Bytes);
+        String salt = "asdfcidjjgnckeiackaokejgc";
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] b = md.digest((salt + seckillId).getBytes());
+        String result = "";
+        for (int i = 0; i < b.length; i++) {
+            String tmp = Integer.toHexString(b[i] & 0xFF);
+            if (tmp.length() == 1) {
+                result += "0" + tmp;
+            } else {
+                result += tmp;
+            }
+        }
+        return result;
     }
 }
+
+
